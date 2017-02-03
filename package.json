@@ -1,0 +1,19 @@
+{
+  "name": "abc-application",
+  "version": "1.0.0",
+  "description": "list of employment",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "./node_modules/.bin/eslint ./app/employment/"
+  },
+  "author": "marckten",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^3.7.1",
+    "eslint-config-standard": "^6.2.0",
+    "eslint-plugin-promise": "^3.0.0",
+    "eslint-plugin-standard": "^2.0.1",
+    "eslint-watch": "^2.1.14"
+  }
+}

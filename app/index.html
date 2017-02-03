@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>ABC corporation</title>
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+</head>
+<body ng-app="abc">
+  <div class="container">
+    <div ng-controller="employmentController">
+       <h1>List of Employess</h1>
+       <div class="row">
+        <employment-form employment=employment> </employment-form>
+      </div>
+      <br>
+
+      <div class="form-group">
+        <div class="col-lg-offset-2 col-lg-10">
+          <button type="submit" class="btn btn-primary" ng-click="saveEmployee()">Submit</button>
+        </div>
+      
+      </div>
+       <br>
+     
+      <employment-list edit='edit(param)' save='save(param)' delete='deleteEmploye(param)' employments=employees 
+      employeselected=employeselected> </employment-list>
+
+    </div>
+
+  </div>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/lodash/lodash.js"></script>
+  <script src="app.js"></script>
+  <script src="employment/employment_module.js"></script>
+  <script src="employment/employment_service.js"></script>
+  <script src="employment/employment_controller.js"></script>
+  <script src="employment/form/form_module.js"></script>
+  <script src="employment/form/form_directive.js"></script>
+  <script src="employment/list/list_module.js"></script>
+  <script src="employment/list/list_directive.js"></script>
+  <script src="storage/storage_module.js"></script>
+  <script src="storage/storage_service.js"></script>
+  <script src="utils/lodash_module.js"></script>
+
+</body>
+</html>
