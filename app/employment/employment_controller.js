@@ -1,4 +1,7 @@
 (function() {
+  
+  'use strict';
+  
   var definitions = [
     '_',
     'employmentService',
@@ -9,10 +12,7 @@
 
   function employmentController(_, employmentService) {
     var vm = this;
-    
-    vm.employment = {};
-    
-      
+
     vm.employeselected = {};
     vm.employees = employmentService.getEmployees();
     vm.saveEmployee = saveEmployee;
