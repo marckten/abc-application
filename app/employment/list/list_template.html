@@ -4,12 +4,27 @@
         <th>Role</th>
     </tr>
     <tr ng-repeat="employment in employments track by $index">
+        
         <td> <span ng-show="!employment.isEdit">{{employment.name}} </span><input type="text" ng-show="employment.isEdit" class="form-control" ng-model="employeselected.name"></td>
         <td><span ng-show="!employment.isEdit">{{employment.role}} </span> <input type="text" ng-show="employment.isEdit" class="form-control" ng-model="employeselected.role"></td>
 
         <td>
             <button type="button" class="btn btn-primary" ng-show="!employment.isEdit"  ng-click="edit({param: employment.id})">Edit</button>
             <button type="button" class="btn btn-primary" ng-show="employment.isEdit" ng-click="save({param: employment.id})">Save</button>
+        </td>
+        
+
+        <td>
+            <form novalidate>
+
+            <formly-form model="employeselected" fields="template" form="vm.rentalForm">
+            <button type="button" class="btn btn-primary"
+            ng-click="edit({param: employment.id})">Edit</button>
+            <button type="submit" class="btn btn-primary" ng-disabled="vm.rentalForm.$invalid"
+            ng-click="save({param: employment.id})">Save</button>
+            </formly-form>
+             </form>
+
         </td>
         <td><button type="button" class="btn btn-primary" ng-click="delete({param: employment.id})">Delete</button></td>
     </tr>

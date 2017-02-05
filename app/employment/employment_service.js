@@ -14,7 +14,8 @@
       addNew: addNew,
       getIndexById: getIndexById,
       updateEmploye: updateEmploye,
-      deleteEmployee: deleteEmployee
+      deleteEmployee: deleteEmployee,
+      getFields: getFields
     };
 
     function getEmployess() {
@@ -23,18 +24,7 @@
 
     function addNew(employees, newEmployee) {
       var last = _.last(employees);
-      var id;
-
-      if (last) {
-        id = last.id + 1;
-      }
-      else {
-        id = 1;
-      }
-
-      if (_.isUndefined(newEmployee.name) || _.isUndefined(newEmployee.role)) {
-        return false;
-      }
+      var id= last ? last.id + 1: 1;
 
       var employee = {
         id: id,
@@ -47,23 +37,16 @@
 
       storageService.storageItem('employments', employees);
 
-      return true;
     }
 
     function updateEmploye(employees, id, employeeUpdated) {
       var index = getIndexById(employees, id);
-
-      if (_.isEmpty(employeeUpdated.name) || _.isEmpty(employeeUpdated.role)) {
-        return false;
-      }
 
       employees[index].isEdit = false;
       employees[index].name = employeeUpdated.name;
       employees[index].role = employeeUpdated.role;
 
       storageService.storageItem('employments', employees);
-
-      return true;
     }
 
     function deleteEmployee(employees, id) {
@@ -76,6 +59,31 @@
       return _.findIndex(employees, function(e) {
         return e.id === id;
       });
+    }
+
+    function getFields(){
+      return [
+        {
+            key: 'name',
+            type: 'input',
+            templateOptions: {
+                type: 'text',
+                label: 'Name',
+                placeholder: 'Enter the name',
+                required: true
+            }
+        },
+        {
+            key: 'role',
+            type: 'input',
+            templateOptions: {
+                type: 'text',
+                label: 'Role',
+                placeholder: 'Enter the role',
+                required: true
+            }
+        }
+      ];
     }
   }
 })();

@@ -17,6 +17,9 @@
   "dependencies": {
     "angular": "^1.5.11",
     "bootstrap": "boostrap#^3.3.7",
-    "lodash": "^4.17.4"
+    "lodash": "^4.17.4",
+    "angular-formly": "^8.4.1",
+    "angular-formly-templates-bootstrap": "^6.3.2",
+    "api-check": "^7.5.5"
   }
 }

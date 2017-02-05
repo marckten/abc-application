@@ -14,7 +14,8 @@
         save: '&save',
         edit: '&edit',
         employeselected: '=employeselected',
-        employments: '=employments'
+        employments: '=employments',
+        template: '='
       },
       templateUrl: 'employment/list/list_template.html'
     };

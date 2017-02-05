@@ -1,52 +1,48 @@
 (function() {
   var definitions = [
     '_',
-    '$scope',
     'employmentService',
     employmentController
   ];
   angular.module('abc.employment')
     .controller('employmentController', definitions);
 
-  function employmentController(_, $scope, employmentService) {
-    $scope.employment = {};
-    var self = this;
+  function employmentController(_, employmentService) {
+    var vm = this;
+    
+    vm.employment = {};
+    
+      
+    vm.employeselected = {};
+    vm.employees = employmentService.getEmployees();
+    vm.saveEmployee = saveEmployee;
+    vm.deleteEmploye = deleteEmploye;
+    vm.save = save;
+    vm.edit = edit;
 
-    $scope.employeselected = {};
-    $scope.employees = employmentService.getEmployees();
-    $scope.saveEmployee = saveEmployee;
-    $scope.deleteEmploye = deleteEmploye;
-    $scope.save = save;
-    $scope.edit = edit;
+    vm.employee = {};
+    vm.employeeFields = employmentService.getFields();
 
     function saveEmployee() {
-      var result = employmentService.addNew($scope.employees, $scope.employment);
-      if (!result) {
-        alert('You need to fill the fields');
-      }
-      else {
-        $scope.employment = {};
-      }
+      employmentService.addNew(vm.employees, vm.employee);
+      vm.employment = {};
     }
 
     function save(idEmploye) {
-      var result = employmentService.updateEmploye($scope.employees, idEmploye, $scope.employeselected);
-      if (!result) {
-        alert('You need to fill the fields');
-      }
+      employmentService.updateEmploye(vm.employees, idEmploye, vm.employeselected);
     }
 
     function deleteEmploye(idEmploye) {
-      employmentService.deleteEmployee($scope.employees, idEmploye, $scope.employeselected);
+      employmentService.deleteEmployee(vm.employees, idEmploye, vm.employeselected);
     }
 
     function edit(idEmploye) {
-      var employees = $scope.employees;
+      var employees = vm.employees;
       var index = employmentService.getIndexById(employees, idEmploye);
 
       employees[index].isEdit = true;
 
-      $scope.employeselected = _.clone(employees[index]);
+      vm.employeselected = _.clone(employees[index]);
     }
   }
 })();
